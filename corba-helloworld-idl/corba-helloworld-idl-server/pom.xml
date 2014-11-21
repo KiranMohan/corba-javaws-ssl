@@ -23,7 +23,7 @@
 						</goals>
 						<configuration>
 							<executable>${JACORB}/bin/idl.bat</executable>
-							<commandlineArgs>-all -nostub -d src/main/java ../HelloWorld.idl</commandlineArgs>
+							<commandlineArgs>-all -d src/main/java ../HelloWorld.idl</commandlineArgs>
 						</configuration>
 					</execution>
 				</executions>

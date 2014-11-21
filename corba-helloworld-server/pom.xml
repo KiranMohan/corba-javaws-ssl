@@ -14,10 +14,12 @@
 		<dependency>
 			<groupId>org.jacorb</groupId>
 			<artifactId>jacorb</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.jacorb</groupId>
 			<artifactId>jacorb-omgapi</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.ktest.study.corba</groupId>
@@ -25,4 +27,29 @@
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>				
+				</executions>
+				<configuration>
+					<executable>${JACORB}/bin/jaco.bat</executable>
+					<arguments>
+						<argument>-cp</argument>
+						<classpath/>
+						<argument>org.ktest.study.corba.HelloServer</argument>
+					</arguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
