@@ -16,6 +16,7 @@ Setup
 	jaco org.jacorb.naming.NameServer -DOAPort=57419 %*
 5. Run Naming Service $JACORB/bin/ns
 
+
 Compiling
 ---------
 "maven clean install" from root directory
