@@ -11,10 +11,11 @@ Setup
    * ORBInitRef.NameService
    * jacorb.naming.ior_filename
 4. Edit $JACORB/bin/ns and change the following line  
-	jaco org.jacorb.naming.NameServer %*  
+	`jaco org.jacorb.naming.NameServer %* ` 
 	to  
-	jaco org.jacorb.naming.NameServer -DOAPort=57419 %*
+	`jaco org.jacorb.naming.NameServer -DOAPort=57419 %*`
 5. Run Naming Service $JACORB/bin/ns
+
 
 Compiling
 ---------
