@@ -1,18 +1,27 @@
 package org.ktest.study.corba;
 
+import java.net.URL;
+import java.util.Properties;
+
 import HelloApp.*;
+
 import org.omg.CosNaming.*;
 import org.omg.CosNaming.NamingContextPackage.*;
 import org.omg.CORBA.*;
 import org.omg.PortableServer.*;
-import org.omg.PortableServer.POA;
 
 public class HelloServer {
 
-	  public static void main(String args[]) {
+    public static void main(String args[]) {
+	      
+	    URL keystorePath = ClassLoader.getSystemResource("testkeyserver.ks");	    
+	    Properties props = new Properties();
+	    props.put("jacorb.security.keystore", keystorePath.toString());
+	    System.out.println("Keystore : " + keystorePath);
+	    
 	    try{
-	      // create and initialize the ORB
-	      ORB orb = ORB.init(args, null);
+	      // create and initialize the ORB	        
+	      ORB orb = ORB.init(args, props);
 
 	      // get reference to rootpoa & activate the POAManager
 	      POA rootpoa = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
@@ -52,4 +61,4 @@ public class HelloServer {
 	      System.out.println("HelloServer Exiting ...");
 	        
 	  }
-	}
+}
