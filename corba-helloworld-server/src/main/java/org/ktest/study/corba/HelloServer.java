@@ -13,13 +13,10 @@ import org.omg.PortableServer.*;
 public class HelloServer {
 
     public static void main(String args[]) {
-	      
-	    Properties props = new Properties();
-	    props.put("jacorb.security.keystore", "testkeyserver.ks");
-	    
+	          
 	    try{
 	      // create and initialize the ORB	        
-	      ORB orb = ORB.init(args, props);
+	      ORB orb = ORB.init(args, null);
 
 	      // get reference to rootpoa & activate the POAManager
 	      POA rootpoa = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
