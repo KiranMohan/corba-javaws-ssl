@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="$encoding"?>
+<jnlp
+    spec="$jnlpspec" codebase="http://localhost:8080/corba-helloworld-client-webapp" 
+    href="$outputFile">
+  <information>  
+    <title>Corba HelloWorld Client</title>
+    <vendor>Corba</vendor>
+#if($project.Url)
+    <homepage href="$project.Url"/>
+#end
+#if($project.Description)
+    <description>$project.Description</description>
+#end
+#if($offlineAllowed)
+    <offline-allowed/>
+#end
+  </information>
+  <security>
+     <all-permissions/>
+  </security>
+  <resources>
+    <j2se version="1.7+" href="http://java.sun.com/products/autodl/j2se" />
+     $dependencies
+     $extensions
+  </resources>
+  <application-desc main-class="$mainClass">
+  </application>
+</jnlp>

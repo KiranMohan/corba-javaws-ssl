@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.ktest.study.corba</groupId>
+		<artifactId>corba-javaws-ssl</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>corba-helloworld-client-webstart</artifactId>
+	<name>CORBA HelloWorld Client Web Start</name>
+	<description>CORBA HelloWorld Client Web Start</description>
+	<dependencies>
+		<dependency>
+			<groupId>org.ktest.study.corba</groupId>
+			<artifactId>corba-helloworld-client</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jacorb</groupId>
+			<artifactId>jacorb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jacorb</groupId>
+			<artifactId>jacorb-omgapi</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>webstart-maven-plugin</artifactId>
+				<version>1.0-beta-6</version>
+				<dependencies>
+					<dependency>
+						<!-- TODO: Remove this dependency this dependency added to resolve 
+							https://jira.codehaus.org/browse/MWEBSTART-269 -->
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>keytool-api-1.7</artifactId>
+						<version>1.5</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jnlp-inline</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<jnlp>
+						<outputFile>corba-helloworld-client.jnlp</outputFile>
+						<mainClass>org.ktest.study.corba.HelloClient</mainClass>
+					</jnlp>
+					<sign>
+						<keystore>${basedir}/jacorb.keystore</keystore>
+						<keypass>jacorb</keypass>
+						<storepass>jacorb</storepass>
+						<!--storetype>fillme</storetype -->
+						<alias>jacorb</alias>
+					</sign>
+					<unsign>true</unsign>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
